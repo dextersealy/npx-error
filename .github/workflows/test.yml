@@ -19,4 +19,8 @@ jobs:
               with:
                   node-version: ${{ matrix.node }}
 
+            - run: npm install -g npm@latest
+              if: ${{ matrix.node == '24' }}
+            - run: npm -v
+            - run: npm config list
             - run: npx --yes ${{ matrix.package }} --version
